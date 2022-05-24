@@ -12,9 +12,9 @@ root.resizable(False, False)
 root.title("Concealium v2.0.1")
 root.config(background="#a30000")
 
-#for app icon uncomment this
-# p1 = PhotoImage(file = "concealium.png")
-# root.iconphoto(False, p1)
+#app icon
+p1 = PhotoImage(file = "concealium.png")
+root.iconphoto(False, p1)
 
 def callback(url):
     webbrowser.open_new_tab(url)
