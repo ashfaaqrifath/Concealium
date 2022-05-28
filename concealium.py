@@ -350,4 +350,4 @@ root.mainloop()
 
 
 
-# <<< Copyright (c) 2022 Ashfaaq Rifath - Concealium >>>
+# <<< Copyright (c) 2022 Ashfaaq Rifath - Concealium v3.0.0>>>
