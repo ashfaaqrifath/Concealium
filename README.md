@@ -63,7 +63,7 @@ Download the 'Concealium.exe' file to start using this tool.
 
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
 ![MIT License](https://img.shields.io/github/followers/ashfaaqrifath?style=social)
-![MIT License](https://img.shields.io/github/stars/ashfaaqrifath/Password-Manager?style=social)
+![MIT License](https://img.shields.io/github/stars/ashfaaqrifath/Concealium?style=social)
 
 
 
