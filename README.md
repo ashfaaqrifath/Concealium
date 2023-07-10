@@ -71,10 +71,10 @@ Download the 'Concealium.exe' file to start using this tool.
 
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
 
-Copyright © 2022 Ashfaaq Rifath - Concealium
+Copyright © 2023 Ashfaaq Rifath - Concealium v3.0.1
 
 
 ##
 <h1 align="center">
-  <img width="300" src="https://ashfaaqrifath.github.io/aqlogo9.png" alt="Ashfaaq">
+  <img width="300" src="https://ashfaaqrifath.github.io/mylogo9.png" alt="Ashfaaq">
 </h1>
