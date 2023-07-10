@@ -13,8 +13,8 @@ import webbrowser
 root = tk.Tk()
 root.geometry("650x400")
 root.resizable(False, False)
-root.title("Concealium v3.0.0")
-root.config(background="#a30000")
+root.title("Concealium v3.0.1")
+root.config(background="#4d4e61")
 
 #app icon
 # p1 = PhotoImage(file = "concealium.png")
@@ -24,10 +24,10 @@ def callback(url):
     webbrowser.open_new_tab(url)
 
 def elements():
-    app_banner = Label(root, text="Concealium",
+    app_banner = Label(root, text="Concealium - File Vault",
                         padx=15,
                         pady=15,
-                        bg="#a30000",
+                        bg="#4d4e61",
                         fg="white",
                         font="Magneto 20 bold")
     app_banner.grid(row=1,
@@ -36,10 +36,10 @@ def elements():
                     padx=5,
                     columnspan=3)
 
-    copyright_label = Label(root, text="Copyright © Ashfaaq Rifath - Concealium",
+    copyright_label = Label(root, text="Copyright © Ashfaaq Rifath",
                         padx=0,
                         pady=0,
-                        bg="#a30000",
+                        bg="#4d4e61",
                         fg="white",)
     copyright_label.grid(row=2,
                     column=3,
@@ -145,7 +145,7 @@ def elements():
                     pady=20,
                     padx=20,)
 
-    github_link = Label(root, text="GitHub", font="Arial 10", fg="white", bg="#a30000", cursor="hand2")
+    github_link = Label(root, text="GitHub", font="Arial 10", fg="white", bg="#4d4e61", cursor="hand2")
     github_link.grid(row=8,
                     pady=5,
                     padx=20,
@@ -155,44 +155,44 @@ def elements():
 
 
 save_path = "C:/Users/Public"
-zip_file = "C:/Users/Public/Hidden"
+zip_file = "C:/Users/Public/Vault"
 
-zip_save = os.path.join(save_path, "Hidden")
+zip_save = os.path.join(save_path, "Vault")
 key_path = os.path.join(save_path, "encryption.key")
 
 
 def zip_folder():
     try:
         shutil.make_archive(zip_save, 'zip', zip_file)
-        shutil.rmtree("C:/Users/Public/Hidden")
-        messagebox.showinfo("Success", "Folder zipped: C:/Users/Public/Hidden.zip")
+        shutil.rmtree("C:/Users/Public/Vault")
+        messagebox.showinfo("Success", "Folder zipped: C:/Users/Public/Vault.zip")
     except FileNotFoundError:
         messagebox.showerror("Error", "Folder already zipped")
 
 def unzip_folder():
     try:
-        zipped_folder = "C:/Users/Public/Hidden.zip"
+        zipped_folder = "C:/Users/Public/Vault.zip"
         with ZipFile(zipped_folder, 'r') as zip:
-            zip.extractall("C:/Users/Public/Hidden")
+            zip.extractall("C:/Users/Public/Vault")
         os.remove(zipped_folder)
-        messagebox.showinfo("Success", "Folder unzipped: C:/Users/Public/Hidden")
+        messagebox.showinfo("Success", "Folder unzipped: C:/Users/Public/Vault")
     except FileNotFoundError:
         messagebox.showerror("Error", "Folder already unzipped")
 
 def encrypt_folder():
     try:
-        confirm = messagebox.askquestion('Encrypt Folder', 'Do you want to encrypt the Hidden folder ?')
+        confirm = messagebox.askquestion('Encrypt Folder', 'Do you want to encrypt the Vault folder ?')
 
         if confirm == 'yes' :
             shutil.make_archive(zip_save, 'zip', zip_file)
-            shutil.rmtree("C:/Users/Public/Hidden")
+            shutil.rmtree("C:/Users/Public/Vault")
 
             key = Fernet.generate_key()
             with open(key_path, "wb") as encryptkey:
                 encryptkey.write(key)
             fernet = Fernet(key)
 
-            user_file_encp = "C:/Users/Public/Hidden.zip"
+            user_file_encp = "C:/Users/Public/Vault.zip"
 
             with open(user_file_encp, 'rb') as file:
                     original_file = file.read()
@@ -216,7 +216,7 @@ def decryption():
         
         #this is the password. this can be changed in the source code.
         elif usr_password == "1234":
-            user_file_decp = "C:/Users/Public/Hidden.zip"
+            user_file_decp = "C:/Users/Public/Vault.zip"
 
             with open(key_path, 'rb') as encp_key:
                 read_enc_key = encp_key.read()
@@ -232,10 +232,10 @@ def decryption():
                 decp_file.write(decrypt)
 
             with ZipFile(user_file_decp, 'r') as zip:
-                zip.extractall("C:/Users/Public/Hidden")
+                zip.extractall("C:/Users/Public/Vault")
 
             os.remove(user_file_decp)
-            messagebox.showinfo("Decrypted", "Folder decrypted: C:/Users/Public/Hidden")
+            messagebox.showinfo("Decrypted", "Folder decrypted: C:/Users/Public/Vault")
 
         elif usr_password != "1234":
             messagebox.showerror("Invalid password", "Wrong password")
@@ -272,26 +272,26 @@ def decrypt_folder():
                     padx=20,)
 
 def the_folder():
-    file_exists = os.path.exists('C:/Users/Public/Hidden')
+    file_exists = os.path.exists('C:/Users/Public/Vault')
     if file_exists == False:
-        os.mkdir("C:/Users/Public/Hidden")
-        messagebox.showinfo("Folder Created", "Hidden folder created: C:/Users/Public/Hidden")
+        os.mkdir("C:/Users/Public/Vault")
+        messagebox.showinfo("Folder Created", "Vault folder created: C:/Users/Public/Vault")
     else:
-        messagebox.showinfo("Folder Exists", "Folder already exists: C:/Users/Public/Hidden")
+        messagebox.showinfo("Folder Exists", "Folder already exists: C:/Users/Public/Vault")
 
 def hide_folder():
     #change this file path to the desired file path
-    file_exists = os.path.exists('C:/Users/Public/Hidden')
+    file_exists = os.path.exists('C:/Users/Public/Vault')
     if file_exists == False:
-        os.mkdir("C:/Users/Public/Hidden")
+        os.mkdir("C:/Users/Public/Vault")
 
-    file_exists = os.path.exists('C:/Users/Public/Hidden.zip')
+    file_exists = os.path.exists('C:/Users/Public/Vault.zip')
     if file_exists == True:
-        os.system("attrib +h /s /d C:/Users/Public/Hidden.zip")
+        os.system("attrib +h /s /d C:/Users/Public/Vault.zip")
 
     #change this file path to the desired file path
-    os.system("attrib +h /s /d C:/Users/Public/Hidden")
-    messagebox.showinfo("Success", "Folder hidden: C:/Users/Public/Hidden")
+    os.system("attrib +h /s /d C:/Users/Public/Vault")
+    messagebox.showinfo("Success", "Folder hidden: C:/Users/Public/Vault")
 
 def show_folder():
     password = Entry(root,
@@ -325,21 +325,19 @@ def show_folder():
     
     #this is the password. this can be changed in the source code.
     elif usr_password == "1234":
-        file_exists = os.path.exists('C:/Users/Public/Hidden.zip')
+        file_exists = os.path.exists('C:/Users/Public/Vault.zip')
         if file_exists == True:
-            os.system("attrib -h /s /d C:/Users/Public/Hidden.zip")
+            os.system("attrib -h /s /d C:/Users/Public/Vault.zip")
 
         #change this file path to the desired file path
-        os.system("attrib -h /s /d C:/Users/Public/Hidden")
-        messagebox.showinfo("Success", "Folder visible: C:/Users/Public/Hidden")
+        os.system("attrib -h /s /d C:/Users/Public/Vault")
+        messagebox.showinfo("Success", "Folder visible: C:/Users/Public/Vault")
 
     elif usr_password != "1234":
         messagebox.showerror("Invalid password", "Wrong password")
 
     elif not pass_entry.get():
         messagebox.showerror("Invalid password", "Enter the password")
-
-
 
 var = IntVar()
 pass_entry = StringVar()
@@ -350,4 +348,4 @@ root.mainloop()
 
 
 
-# <<< Copyright (c) 2022 Ashfaaq Rifath - Concealium v3.0.0>>>
+# Copyright (c) 2023 Ashfaaq Rifath - Concealium v3.0.1
